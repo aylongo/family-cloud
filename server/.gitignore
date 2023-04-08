@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Local files directory
 files/*
+
+# exception to the rule
+!files/.gitkeep 
