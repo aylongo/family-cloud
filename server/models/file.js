@@ -6,8 +6,8 @@ const fileSchema = new Schema({
   path: String,
   file: [{ body: String, date: Date }],
   dateCreated: { type: Date, default: Date.now },
-  dateUpdated: { type: Date, default: Date.now },
-  isFolder: Boolean,
+  size: Number,
+  isFolder: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("file", fileSchema);

@@ -1,6 +1,6 @@
 <template>
-  <v-container class="file-upload">
-    <v-sheet color="blue-grey lighten-5" rounded="xl">
+  <v-container class="font-heebo">
+    <v-sheet class="background-sheet" color="blue-grey lighten-5" rounded="xl">
       <v-row>
         <v-col class="text-center">
           <span class="text-h7"> העלאת קבצים לענן </span>
@@ -21,6 +21,17 @@
               v-model="files"
               truncate-length="50"
             ></v-file-input>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <v-text-field
+              label="שם קובץ"
+              class="px-12"
+              prepend-icon="mdi-file-edit"
+              v-model="fileName"
+            ></v-text-field>
           </v-col>
         </v-row>
 
@@ -54,6 +65,7 @@ export default {
     loader: null,
     loading: false,
     files: [],
+    fileName: "",
   }),
   watch: {
     loader() {
@@ -69,6 +81,7 @@ export default {
 
       const filesData = new FormData();
 
+      this.fileName && filesData.append("fileName", `${this.fileName}.${this.fileExtension}`);
       filesData.append("newFile", [...this.files][0]);
 
       try {
@@ -84,13 +97,18 @@ export default {
     isFileAdded() {
       return this.files.length > 0;
     },
+    fileExtension() {
+      return this.files[0].name.split(".").pop();
+    },
   },
 };
 </script>
 
 <style scoped>
-.file-upload {
-  font-family: "Heebo";
+@import "../utils/styles/index.css";
+
+.ajs-success {
+  font-family: inherit;
 }
 .custom-loader {
   animation: loader 1s infinite;
@@ -103,8 +121,5 @@ export default {
   to {
     transform: rotate(360deg);
   }
-}
-.ajs-success {
-  font-family: "Heebo";
 }
 </style>

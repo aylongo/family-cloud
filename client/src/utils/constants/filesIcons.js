@@ -1,0 +1,9 @@
+export const DEFAULT_FILE_ICON = "mdi-file";
+export const MICROSOFT_WORD_DOCUMENT_FILE_ICON = "mdi-file-word-box";
+export const MICROSOFT_POWERPOINT_PRESENTATION_FILE_ICON = "mdi-file-powerpoint-box";
+export const MICROSOFT_EXCEL_WORKBOOK_FILE_ICON = "mdi-file-excel-box";
+export const GIF_FILE_ICON = "mdi-file-gif-box";
+export const JPG_FILE_ICON = "mdi-file-jpg-box";
+export const PNG_FILE_ICON = "mdi-file-png-box";
+export const IMAGE_FILE_ICON = "mdi-image";
+export const PDF_DOCUMENT_FILE_ICON = "mdi-file-pdf-box";

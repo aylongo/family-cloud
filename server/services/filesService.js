@@ -1,9 +1,29 @@
 const filesRepository = require("../repositories/filesRepository");
+const { getFullFilePath } = require("../utils/functions");
 
-exports.getAll = (name) => {
-    return filesRepository.findAll(name);
-}
+exports.getFilesOnPath = async (fileRelativePath) => {
+  try {
+    const filesPath = getFullFilePath(fileRelativePath);
 
-exports.getByName = (name) => {
-    return filesRepository.findByName(name);
-}
+    return (await filesRepository.getFilesOnPath(filesPath)).map(
+      ({ fileName, fileStats }) => ({
+        name: fileName,
+        path: fileRelativePath || "",
+        size: fileStats.size,
+        createdAt: fileStats.birthtime,
+        isDirectory: fileStats.isDirectory(),
+      })
+    );
+  } catch (err) {
+    throw err;
+  }
+};
+
+exports.uploadFile = async (newFile, fileName) => {
+  try {
+    fileName && (newFile.name = fileName);
+    await filesRepository.uploadFile(newFile);
+  } catch (err) {
+    throw err;
+  }
+};

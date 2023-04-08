@@ -1,34 +1,37 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 
 const filesService = require("../services/filesService");
+const { getFullFilePath } = require("../utils/functions");
 
-const FILES_PATH = "files";
+router.get("", async (req, res, next) => {
+  try {
+    res.send(await filesService.getFilesOnPath(req.query.filesPath));
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post("/upload", async (req, res, next) => {
   try {
     if (!req.body) {
-      throw new Error("File not found");
+      throw new Error("File was not found");
     } else {
-      const newFile = req.files.newFile;
+      filesService.uploadFile(req.files.newFile, req.body.fileName);
 
-      fs.appendFileSync(`${FILES_PATH}/${newFile.name}`, newFile.data);
-
-      res.send();
+      res.send(req.files.newFile);
     }
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send();
+    next(err);
   }
-
-  res.send();
 });
 
-router.get("/download", (req, res, next) => {});
-
-router.get("/all", async (req, res, next) => {
-  res.send(filesService.getAll());
+router.get("/download", async (req, res, next) => {
+  try {
+    res.download(getFullFilePath(req.query.filePath));
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

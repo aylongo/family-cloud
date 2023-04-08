@@ -14,6 +14,8 @@
     "cors": "^2.8.5",
     "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
+    "js-file-download": "^0.4.12",
+    "path": "^0.12.7",
     "vue": "^2.7.10",
     "vue-alertify": "^1.1.0",
     "vue-router": "^3.5.1",

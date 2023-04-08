@@ -6,6 +6,7 @@ import vuetify from "./plugins/vuetify";
 import VueAlertify from "vue-alertify";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import "./utils/styles/index.css";
 
 Vue.use(VueAlertify);
 

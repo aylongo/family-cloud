@@ -1,6 +1,6 @@
 <template>
-  <v-container class="file-upload">
-    <v-sheet color="blue-grey lighten-5" rounded="xl">
+  <v-container class="font-heebo">
+    <v-sheet class="background-sheet" color="blue-grey lighten-5" rounded="xl">
       <v-row>
         <v-col class="text-center">
           <span class="text-h7"> חיפוש קבצים בענן </span>
@@ -45,9 +45,8 @@ export default {
 </script>
 
 <style scoped>
-.file-upload {
-  font-family: "Heebo";
-}
+@import "../utils/styles/index.css";
+
 .custom-loader {
   animation: loader 1s infinite;
   display: flex;
