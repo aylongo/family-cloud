@@ -23,7 +23,7 @@
 
 <script>
 const api = require("../api/api.js");
-import { getFileIconByExtension } from "@/utils/fileIconByExtension";
+import { getFileIconByExtension } from "@/utils/functions";
 
 export default {
   name: "FileCard",

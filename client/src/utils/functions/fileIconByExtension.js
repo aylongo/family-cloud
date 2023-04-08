@@ -7,8 +7,6 @@ import {
   JPEG_FILE,
   PNG_FILE,
   PDF_DOCUMENT_FILE,
-} from "./constants/filesExtensions";
-import {
   MICROSOFT_WORD_DOCUMENT_FILE_ICON,
   MICROSOFT_POWERPOINT_PRESENTATION_FILE_ICON,
   MICROSOFT_EXCEL_WORKBOOK_FILE_ICON,
@@ -18,7 +16,7 @@ import {
   PDF_DOCUMENT_FILE_ICON,
   IMAGE_FILE_ICON,
   DEFAULT_FILE_ICON,
-} from "./constants/filesIcons";
+} from "../constants";
 
 const fileIconByExtension = {
   [MICROSOFT_WORD_DOCUMENT_FILE]: MICROSOFT_WORD_DOCUMENT_FILE_ICON,
