@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import File from "@/components/File.vue";
-import Directory from "@/components/Directory.vue";
+import File from "@/components/DataCards/File.vue";
+import Directory from "@/components/DataCards/Directory.vue";
 
 const api = require("../api/api.js");
 

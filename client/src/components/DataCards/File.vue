@@ -1,5 +1,7 @@
 <template>
   <v-sheet
+    v-bind="attrs"
+    v-on="on"
     color="indigo lighten-3"
     rounded="xl"
     @click="downloadFile"
@@ -11,10 +13,27 @@
           <v-icon class="pa-3" large>{{ fileIcon }}</v-icon>
         </v-col>
 
-        <v-col class="d-flex align-center text-center">
+        <v-col cols="6" class="d-flex align-center text-center">
           <span class="text-h7">{{
             isFileNameLengthValid ? fileName : shortenFileName
           }}</span>
+        </v-col>
+
+        <v-col cols="3" class="d-flex align-center justify-end">
+          <v-menu
+            v-model="menu"
+            :close-on-content-click="true"
+            :nudge-width="150"
+            offset-x
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list> </v-list>
+          </v-menu>
         </v-col>
       </v-row>
     </v-container>
@@ -22,8 +41,8 @@
 </template>
 
 <script>
-const api = require("../api/api.js");
 import { getFileIconByExtension } from "@/utils/functions";
+const api = require("../../api/api.js");
 
 export default {
   name: "FileCard",
@@ -60,7 +79,7 @@ export default {
       return this.name || "קובץ";
     },
     shortenFileName() {
-      return this.name.substring(0, 35) + "...";
+      return this.name.substring(0, 20) + "...";
     },
     fileExtension() {
       return this.name.split(".").pop();
@@ -69,12 +88,12 @@ export default {
       return getFileIconByExtension(this.fileExtension);
     },
     isFileNameLengthValid() {
-      return this.name.length <= 35;
+      return this.name.length <= 20;
     },
   },
 };
 </script>
 
 <style scoped>
-@import "../utils/styles/index.css";
+@import "../../utils/styles/index.css";
 </style>

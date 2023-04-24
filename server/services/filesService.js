@@ -5,15 +5,15 @@ exports.getFilesOnPath = async (fileRelativePath) => {
   try {
     const filesPath = getFullFilePath(fileRelativePath);
 
-    return (await filesRepository.getFilesOnPath(filesPath)).map(
-      ({ fileName, fileStats }) => ({
+    return (await filesRepository.getFilesOnPath(filesPath))
+      .filter(({ fileName }) => !fileName.startsWith("."))
+      .map(({ fileName, fileStats }) => ({
         name: fileName,
         path: fileRelativePath || "",
         size: fileStats.size,
         createdAt: fileStats.birthtime,
         isDirectory: fileStats.isDirectory(),
-      })
-    );
+      }));
   } catch (err) {
     throw err;
   }

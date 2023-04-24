@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../utils/styles/index.css";
+@import "../../utils/styles/index.css";
 </style>
