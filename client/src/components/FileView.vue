@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h4 class="font-heebo text-center text-h7">
+          <h4 class="font-family text-center text-h7">
             {{ `הנתיב הנוכחי: /${currentPath}` }}
           </h4>
         </v-col>

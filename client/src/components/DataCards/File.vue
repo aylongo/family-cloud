@@ -5,7 +5,7 @@
     color="indigo lighten-3"
     rounded="xl"
     @click="downloadFile"
-    class="clickable-element font-heebo"
+    class="clickable-element font-family"
   >
     <v-container>
       <v-row justify="center">
@@ -20,20 +20,7 @@
         </v-col>
 
         <v-col cols="3" class="d-flex align-center justify-end">
-          <v-menu
-            v-model="menu"
-            :close-on-content-click="true"
-            :nudge-width="150"
-            offset-x
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </template>
-
-            <v-list> </v-list>
-          </v-menu>
+          <MenuButton :items="[{ title: 'מחיקה', icon: 'mdi-trash-can' }]" />
         </v-col>
       </v-row>
     </v-container>
@@ -41,6 +28,7 @@
 </template>
 
 <script>
+import MenuButton from "@/components/Menus/MenuButton.vue";
 import { getFileIconByExtension } from "@/utils/functions";
 const api = require("../../api/api.js");
 
@@ -51,6 +39,9 @@ export default {
     path: String,
     size: Number,
     createdAt: String,
+  },
+  components: {
+    MenuButton,
   },
   methods: {
     async downloadFile() {

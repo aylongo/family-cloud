@@ -2,7 +2,7 @@
   <v-sheet
     color="deep-purple lighten-3"
     rounded="xl"
-    class="clickable-element font-heebo"
+    class="clickable-element font-family"
     @mouseenter="isHover = true"
     @mouseleave="isHover = false"
   >

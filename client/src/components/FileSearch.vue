@@ -1,5 +1,5 @@
 <template>
-  <v-container class="font-heebo">
+  <v-container class="font-family">
     <v-sheet class="background-sheet" color="blue-grey lighten-5" rounded="xl">
       <v-row>
         <v-col class="text-center">

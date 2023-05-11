@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar class="nav-bar" color="indigo" elevation="2" dark>
+    <v-app-bar class="nav-bar-text" color="indigo" elevation="2" dark>
       <v-icon class="pa-3" large>mdi-cloud-tags</v-icon>
       <v-toolbar-title>ענן משפחתי</v-toolbar-title>
 
@@ -13,7 +13,7 @@
       <v-container>
         <v-row>
           <v-col class="text-center">
-            <span class="text-h6"> תפריט </span>
+            <span class="text-h5">תפריט</span>
           </v-col>
         </v-row>
       </v-container>
@@ -52,8 +52,10 @@ export default {
 </script>
 
 <style scoped>
-.nav-bar {
+@import "../utils/styles/index.css";
+
+.nav-bar-text {
   font-family: "Heebo";
-  font-weight: bold;
+  font-weight: Bold;
 }
 </style>
