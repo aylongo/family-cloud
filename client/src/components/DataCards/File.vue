@@ -14,9 +14,7 @@
         </v-col>
 
         <v-col cols="6" class="d-flex align-center text-center">
-          <span class="text-h7">{{
-            isFileNameLengthValid ? fileName : shortenFileName
-          }}</span>
+          <span class="text-h7 text-truncate">{{ fileName }}</span>
         </v-col>
 
         <v-col cols="3" class="d-flex align-center justify-end">
@@ -69,17 +67,11 @@ export default {
     fileName() {
       return this.name || "קובץ";
     },
-    shortenFileName() {
-      return this.name.substring(0, 20) + "...";
-    },
     fileExtension() {
       return this.name.split(".").pop();
     },
     fileIcon() {
       return getFileIconByExtension(this.fileExtension);
-    },
-    isFileNameLengthValid() {
-      return this.name.length <= 20;
     },
   },
 };

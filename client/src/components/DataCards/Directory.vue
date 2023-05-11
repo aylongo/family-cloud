@@ -15,7 +15,7 @@
         </v-col>
 
         <v-col class="d-flex align-center text-center">
-          <span class="text-h7">{{ name || "תיקייה" }}</span>
+          <span class="text-h7 text-truncate">{{ name || "תיקייה" }}</span>
         </v-col>
       </v-row>
     </v-container>

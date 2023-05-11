@@ -1,15 +1,25 @@
 <template>
-  <v-sheet class="background-sheet" color="grey lighten-4" rounded="xl">
+  <v-sheet
+    class="background-sheet font-family"
+    color="grey lighten-4"
+    rounded="xl"
+  >
     <v-container>
       <v-row>
         <v-col>
-          <h4 class="font-family text-center text-h7">
+          <h4 class="font-family text-center text-h7 font-weight-medium">
             {{ `הנתיב הנוכחי: /${currentPath}` }}
           </h4>
         </v-col>
       </v-row>
 
-      <v-row justify="center">
+      <v-row>
+        <v-col class="font-weight-medium" justify="start">
+          <span class="text-h7 pa-3">תיקיות</span>
+        </v-col>
+      </v-row>
+
+      <v-row justify="start">
         <v-col
           class="data-card"
           v-for="(directory, key) in directoriesOnPath"
@@ -21,7 +31,15 @@
             :createdAt="directory.createdAt"
           />
         </v-col>
+      </v-row>
 
+      <v-row>
+        <v-col class="font-weight-medium" justify="start">
+          <span class="text-h7 pa-3">קבצים</span>
+        </v-col>
+      </v-row>
+
+      <v-row justify="start">
         <v-col class="data-card" v-for="(file, key) in filesOnPath" :key="key">
           <file
             :name="file.name"
@@ -80,7 +98,7 @@ export default {
 
 .data-card {
   position: relative;
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 350px;
+  max-width: 350px;
 }
 </style>
