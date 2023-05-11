@@ -1,8 +1,8 @@
 <template>
   <v-sheet
+    class="clickable-element font-family"
     color="deep-purple lighten-3"
     rounded="xl"
-    class="clickable-element font-family"
     @mouseenter="isHover = true"
     @mouseleave="isHover = false"
   >

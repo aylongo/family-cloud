@@ -1,11 +1,11 @@
 <template>
   <v-sheet
+    class="clickable-element font-family"
     v-bind="attrs"
     v-on="on"
     color="indigo lighten-3"
     rounded="xl"
     @click="downloadFile"
-    class="clickable-element font-family"
   >
     <v-container>
       <v-row justify="center">

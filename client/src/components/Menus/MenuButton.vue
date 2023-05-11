@@ -2,9 +2,10 @@
   <v-menu
     v-model="menu"
     :close-on-content-click="true"
-    :nudge-width="160"
-    bottom
+    :nudge-width="250"
+    rounded="xl"
     left
+    bottom
   >
     <template v-slot:activator="{ on, attrs }">
       <v-btn icon v-bind="attrs" v-on="on">
