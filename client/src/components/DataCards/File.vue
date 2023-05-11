@@ -18,7 +18,7 @@
         </v-col>
 
         <v-col cols="3" class="d-flex align-center justify-end">
-          <MenuButton :items="[{ title: 'מחיקה', icon: 'mdi-trash-can' }]" />
+          <MenuButton :items="menuItems" />
         </v-col>
       </v-row>
     </v-container>
@@ -41,6 +41,13 @@ export default {
   components: {
     MenuButton,
   },
+  data: () => ({
+    menuItems: [
+      { title: "פרטים נוספים", icon: "mdi-information-outline" },
+      { title: "הורדה", icon: "mdi-tray-arrow-down" },
+      { title: "מחיקה", icon: "mdi-trash-can-outline" },
+    ],
+  }),
   methods: {
     async downloadFile() {
       try {

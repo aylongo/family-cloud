@@ -14,14 +14,14 @@
     </template>
 
     <v-list class="font-family">
-      <v-list-item v-for="(item, key) in items" :key="key">
+      <v-list-item v-for="(item, key) in items" :key="key" dense>
         <v-list-item-icon>
-          <v-icon>
+          <v-icon class="list-item-icon" left>
             {{ item.icon }}
           </v-icon>
         </v-list-item-icon>
 
-        <v-list-item-title>
+        <v-list-item-title class="list-item-title">
           {{ item.title }}
         </v-list-item-title>
       </v-list-item>
@@ -43,4 +43,13 @@ export default {
 
 <style scoped>
 @import "../../utils/styles/index.css";
+
+.list-item-icon {
+  color: #000;
+  size: 25;
+}
+.list-item-title {
+  font-size: smaller;
+  font-weight: normal;
+}
 </style>

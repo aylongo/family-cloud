@@ -7,7 +7,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h4 class="font-family text-center text-h7 font-weight-medium">
+          <h4 class="text-center text-h7 font-weight-medium">
             {{ `הנתיב הנוכחי: /${currentPath}` }}
           </h4>
         </v-col>

@@ -1,5 +1,5 @@
 .font-family {
-  font-family: "Rubik";
+  font-family: "Rubik", "Heebo";
 }
 .clickable-element:hover {
   cursor: pointer;
