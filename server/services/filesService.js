@@ -19,10 +19,11 @@ exports.getFilesOnPath = async (fileRelativePath) => {
   }
 };
 
-exports.uploadFile = async (newFile, fileName) => {
+exports.uploadFile = async (newFile, fileName, newFileRelativePath) => {
   try {
     fileName && (newFile.name = fileName);
-    await filesRepository.uploadFile(newFile);
+    const newFileFullPath = getFullFilePath(newFileRelativePath);
+    await filesRepository.uploadFile(newFile, newFileFullPath);
   } catch (err) {
     throw err;
   }

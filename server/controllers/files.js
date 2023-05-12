@@ -17,7 +17,7 @@ router.post("/upload", async (req, res, next) => {
     if (!req.body) {
       throw new Error("File was not found");
     } else {
-      filesService.uploadFile(req.files.newFile, req.body.fileName);
+      filesService.uploadFile(req.files.newFile, req.body.fileName, req.query.newFilePath);
 
       res.send(req.files.newFile);
     }

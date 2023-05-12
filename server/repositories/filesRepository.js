@@ -1,7 +1,6 @@
 const fs = require("fs");
 
 const File = require("../models/file");
-const { FILES_PATH } = require("../utils/constants");
 
 exports.getFilesOnPath = async (filesPath) => {
   try {
@@ -14,9 +13,9 @@ exports.getFilesOnPath = async (filesPath) => {
   }
 };
 
-exports.uploadFile = async (newFile) => {
+exports.uploadFile = async (newFile, newFilePath) => {
   try {
-    await fs.appendFileSync(`${FILES_PATH}/${newFile.name}`, newFile.data);
+    await fs.appendFileSync(`${newFilePath}/${newFile.name}`, newFile.data);
   } catch (err) {
     throw err;
   }
