@@ -13,25 +13,27 @@
       </v-btn>
     </template>
 
-    <v-list class="font-family">
-      <v-list-item
-        v-for="(item, key) in items"
-        :key="key"
-        @click="item.itemAction()"
-        @click.right.prevent
-        dense
-        link
-      >
-        <v-list-item-icon>
-          <v-icon class="list-item-icon" left>
-            {{ item.icon }}
-          </v-icon>
-        </v-list-item-icon>
+    <v-list class="font-family" flat>
+      <v-list-item-group>
+        <v-list-item
+          v-for="(item, key) in items"
+          :key="key"
+          @click="item.itemAction()"
+          @click.right.prevent
+          dense
+          link
+        >
+          <v-list-item-icon>
+            <v-icon class="list-item-icon" left>
+              {{ item.icon }}
+            </v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-title class="list-item-title">
-          {{ item.title }}
-        </v-list-item-title>
-      </v-list-item>
+          <v-list-item-title class="list-item-title">
+            {{ item.title }}
+          </v-list-item-title>
+        </v-list-item>
+      </v-list-item-group>
     </v-list>
   </v-menu>
 </template>
