@@ -1,24 +1,25 @@
 <template>
   <v-menu
-    v-model="menu"
+    v-model="showMenu"
     :close-on-content-click="true"
     :nudge-width="250"
     rounded="xl"
+    transition="slide-y-transition"
     left
     bottom
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-btn v-bind="attrs" v-on="on" @click.right.prevent="menu = !menu" icon>
+      <v-btn v-bind="attrs" v-on="on" @click.right.prevent="showMenu = !showMenu" icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </template>
 
     <v-list class="font-family" flat>
-      <v-list-item-group>
+      <v-list-item-group v-model="selectedItem">
         <v-list-item
           v-for="(item, key) in items"
           :key="key"
-          @click="item.itemAction()"
+          @click="handleItemClick(item)"
           @click.right.prevent
           dense
           link
@@ -47,9 +48,14 @@ export default {
     },
   },
   data: () => ({
-    menu: false,
+    showMenu: false,
+    selectedItem: null,
   }),
-  methods: {},
+  methods: {
+    handleItemClick(item) {
+      item.itemAction();
+    }
+  },
 };
 </script>
 
