@@ -8,7 +8,12 @@
     bottom
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-btn icon v-bind="attrs" v-on="on">
+      <v-btn
+        v-bind="attrs"
+        v-on="on"
+        @click.right.prevent="menu = !menu"
+        icon
+      >
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </template>
@@ -37,6 +42,9 @@ export default {
       type: Array,
     },
   },
+  data: () => ({
+    menu: false
+  }),
   methods: {},
 };
 </script>

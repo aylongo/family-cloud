@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click.right.prevent>
     <v-app-bar class="nav-bar-text" color="indigo" elevation="2" dark>
       <v-icon class="pa-3" large>mdi-cloud-tags</v-icon>
       <v-toolbar-title>ענן משפחתי</v-toolbar-title>

@@ -3,6 +3,7 @@
     class="background-sheet font-family"
     color="grey lighten-4"
     rounded="xl"
+    @click.right.prevent=""
   >
     <v-container>
       <v-row>
