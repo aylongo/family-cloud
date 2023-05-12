@@ -8,18 +8,20 @@
     bottom
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        v-bind="attrs"
-        v-on="on"
-        @click.right.prevent="menu = !menu"
-        icon
-      >
+      <v-btn v-bind="attrs" v-on="on" @click.right.prevent="menu = !menu" icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </template>
 
     <v-list class="font-family">
-      <v-list-item v-for="(item, key) in items" :key="key" dense>
+      <v-list-item
+        v-for="(item, key) in items"
+        :key="key"
+        @click="item.itemAction()"
+        @click.right.prevent
+        dense
+        link
+      >
         <v-list-item-icon>
           <v-icon class="list-item-icon" left>
             {{ item.icon }}
@@ -43,7 +45,7 @@ export default {
     },
   },
   data: () => ({
-    menu: false
+    menu: false,
   }),
   methods: {},
 };
