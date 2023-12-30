@@ -9,16 +9,22 @@
     bottom
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-btn v-bind="attrs" v-on="on" @click.right.prevent="showMenu = !showMenu" icon>
+      <v-btn
+        v-bind="attrs"
+        v-on="on"
+        @click.right.prevent="showMenu = !showMenu"
+        icon
+      >
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </template>
 
-    <v-list class="font-family" flat>
+    <v-list class="list font-family" flat>
       <v-list-item-group v-model="selectedItem">
         <v-list-item
           v-for="(item, key) in items"
           :key="key"
+          class="list-item clickable-element"
           @click="handleItemClick(item)"
           @click.right.prevent
           dense
@@ -54,7 +60,7 @@ export default {
   methods: {
     handleItemClick(item) {
       item.itemAction();
-    }
+    },
   },
 };
 </script>
@@ -62,6 +68,11 @@ export default {
 <style scoped>
 @import "../../utils/styles/index.css";
 
+.list-item:hover {
+  background-color: #f5f5f5;
+  transition: filter 0.3s;
+  filter: contrast(85%);
+}
 .list-item-icon {
   color: #000;
   size: 25;
