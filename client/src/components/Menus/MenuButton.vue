@@ -59,7 +59,7 @@ export default {
   }),
   methods: {
     handleItemClick(item) {
-      item.itemAction();
+      item.itemAction && item.itemAction();
     },
   },
 };
