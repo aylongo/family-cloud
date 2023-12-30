@@ -5,7 +5,6 @@
     v-on="on"
     color="indigo lighten-3"
     rounded="xl"
-    @click="downloadFile"
   >
     <v-container>
       <v-row justify="center">
@@ -42,11 +41,7 @@ export default {
     MenuButton,
   },
   data: () => ({
-    menuItems: [
-      { title: "פרטים נוספים", icon: "mdi-information-outline" },
-      { title: "הורדה", icon: "mdi-tray-arrow-down" },
-      { title: "מחיקה", icon: "mdi-trash-can-outline" },
-    ],
+    menuItems: [],
   }),
   methods: {
     async downloadFile() {
@@ -80,6 +75,17 @@ export default {
     fileIcon() {
       return getFileIconByExtension(this.fileExtension);
     },
+  },
+  created() {
+    this.menuItems = [
+      { title: "פרטים נוספים", icon: "mdi-information-outline" },
+      {
+        title: "הורדה",
+        icon: "mdi-tray-arrow-down",
+        itemAction: this.downloadFile,
+      },
+      { title: "מחיקה", icon: "mdi-trash-can-outline" },
+    ];
   },
 };
 </script>
