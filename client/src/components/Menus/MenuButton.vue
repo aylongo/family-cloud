@@ -1,12 +1,11 @@
 <template>
   <v-menu
     v-model="showMenu"
-    :close-on-content-click="true"
-    :nudge-width="250"
+    :nudge-width="200"
     rounded="xl"
-    transition="slide-y-transition"
-    left
-    bottom
+    transition="scale-transition"
+    origin="right top"
+    close-on-content-click
   >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
