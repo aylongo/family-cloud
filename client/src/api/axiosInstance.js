@@ -1,8 +1,7 @@
 const axios = require("axios");
 
-const FILES_SERVER_IP = "10.100.102.21" || "localhost";
-const PORT = 3000;
+const FILES_SERVER_URL = process.env.VUE_APP_FILES_SERVER_URL || "http://localhost:3000";
 
 module.exports = axios.create({
-  baseURL: `http://${FILES_SERVER_IP}:${PORT}`,
+  baseURL: FILES_SERVER_URL,
 });
