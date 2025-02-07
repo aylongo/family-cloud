@@ -1,8 +1,6 @@
 <template>
   <v-sheet
     class="clickable-element font-family"
-    v-bind="attrs"
-    v-on="on"
     color="indigo lighten-3"
     rounded="xl"
   >
@@ -17,7 +15,15 @@
         </v-col>
 
         <v-col cols="3" class="d-flex align-center justify-end">
-          <MenuButton :items="menuItems" />
+          <menu-button :items="menuItems" />
+          <file-details-dialog
+            :name="fileName"
+            :icon="fileIcon"
+            :size="fileFormattedSize"
+            :createdAt="fileFormattedCreatedAt"
+            :showDialog="isDetailsDialogShown"
+						@update:showDialog="isDetailsDialogShown = $event"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -25,9 +31,12 @@
 </template>
 
 <script>
+import { format } from "date-fns";
+import { he } from "date-fns/locale";
 import MenuButton from "@/components/Menus/MenuButton.vue";
+import FileDetailsDialog from "./FileDetailsDialog.vue";
 import { getFileIconByExtension } from "@/utils/functions";
-const api = require("../../api/api.js");
+const api = require("../../../api/api.js");
 
 export default {
   name: "FileCard",
@@ -39,16 +48,16 @@ export default {
   },
   components: {
     MenuButton,
+    FileDetailsDialog,
   },
   data: () => ({
     menuItems: [],
+    isDetailsDialogShown: false,
   }),
   methods: {
     async downloadFile() {
       try {
-        const res = await api
-          .files()
-          .download(this.path ? this.path + "/" + this.name : this.name);
+        const res = await api.files().download(this.fileFormattedPath);
 
         this.createDownloadLinkElement(res.data).click();
       } catch (err) {
@@ -64,6 +73,9 @@ export default {
 
       return link;
     },
+    openDetailsDialog() {
+      this.isDetailsDialogShown = true;
+    },
   },
   computed: {
     fileName() {
@@ -75,10 +87,43 @@ export default {
     fileIcon() {
       return getFileIconByExtension(this.fileExtension);
     },
+    fileFormattedPath() {
+      return this.path ? this.path + "/" + this.name : this.name;
+    },
+    fileFormattedCreatedAt() {
+      return format(this.createdAt, "PPPPp", { locale: he });
+    },
+    fileFormattedSize() {
+      if (this.size == 0) return "0 Bytes";
+
+      const kiloByteSize = 1024;
+      const sizesNames = [
+        `${this.size <= 1 ? "Byte" : "Bytes"}`,
+        "KB",
+        "MB",
+        "GB",
+        "TB",
+        "PB",
+        "EB",
+        "ZB",
+        "YB",
+      ];
+      const i = Math.floor(Math.log(this.size) / Math.log(kiloByteSize));
+
+      return (
+        parseFloat((this.size / Math.pow(kiloByteSize, i)).toFixed(2)) +
+        " " +
+        sizesNames[i]
+      );
+    },
   },
   created() {
     this.menuItems = [
-      { title: "פרטים נוספים", icon: "mdi-information-outline" },
+      {
+        title: "פרטים נוספים",
+        icon: "mdi-information-outline",
+        itemAction: this.openDetailsDialog,
+      },
       {
         title: "הורדה",
         icon: "mdi-tray-arrow-down",
@@ -91,5 +136,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../utils/styles/index.css";
+@import "../../../utils/styles/index.css";
 </style>

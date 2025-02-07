@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import File from "@/components/DataCards/File.vue";
-import Directory from "@/components/DataCards/Directory.vue";
+import File from "@/components/DataCards/File/File.vue";
+import Directory from "@/components/DataCards/Directory/Directory.vue";
 
 const api = require("../api/api.js");
 

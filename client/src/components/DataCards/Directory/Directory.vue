@@ -5,6 +5,7 @@
     rounded="xl"
     @mouseenter="isHover = true"
     @mouseleave="isHover = false"
+    @click="enterFolder"
   >
     <v-container absolute clipped right permanent>
       <v-row justify="center">
@@ -34,9 +35,14 @@ export default {
     isHover: false,
     files: [],
   }),
+  methods: {
+    async enterFolder() {
+      // TODO: use the vuex store to store global variables like the path
+    }
+  }
 };
 </script>
 
 <style scoped>
-@import "../../utils/styles/index.css";
+@import "../../../utils/styles/index.css";
 </style>
