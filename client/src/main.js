@@ -3,18 +3,14 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
-import VueAlertify from "vue-alertify";
-import Toast from "vue-toastification";
+import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import "./utils/styles/index.css";
 
-Vue.use(VueAlertify);
-
 const toastOptions = {
-  transition: "Vue-Toastification__bounce",
   maxToasts: 20,
   newestOnTop: true,
-  position: "bottom-right",
+  position: POSITION.BOTTOM_LEFT,
   timeout: 5000,
   closeOnClick: true,
   pauseOnFocusLoss: false,
@@ -25,7 +21,6 @@ const toastOptions = {
   hideProgressBar: false,
   closeButton: "button",
   icon: true,
-  rtl: true,
 };
 
 Vue.use(Toast, toastOptions);
