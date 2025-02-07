@@ -10,10 +10,24 @@
   cursor: pointer;
   transition: filter 0.3s;
   filter: sepia(20%);
-  transform: scale(1.03);
-  /* box-shadow: 0 0 11px rgba(24, 74, 107, 0.2); */
+  transform: scale(1.01);
 }
 
 .background-sheet {
   min-width: 300px;
+}
+
+.dialog-card-container {
+  height: 50vh;
+}
+
+.dialog-card-title {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dialog-card-body {
+  font-size: 1rem;
 }
