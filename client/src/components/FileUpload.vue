@@ -80,16 +80,15 @@ export default {
       this.loader = "loading";
 
       const filesData = new FormData();
-
-      this.fileName && filesData.append("fileName", `${this.fileName}.${this.fileExtension}`);
+      filesData.append("newFileName", this.newFileName);
       filesData.append("newFile", [...this.files][0]);
 
       try {
         await api.files().upload(filesData);
 
-        this.$toast.success("הקובץ הועלה");
-      } catch (err) {
-        this.$toast.error("העלאת הקובץ נכשלה");
+        this.$toast.success(`הקובץ '${this.newFileName}' הועלה`);
+      } catch (error) {
+        this.$toast.error(error.message);
       }
     },
   },
@@ -99,6 +98,11 @@ export default {
     },
     fileExtension() {
       return this.files[0].name.split(".").pop();
+    },
+    newFileName() {
+      return this.fileName
+        ? `${this.fileName}.${this.fileExtension}`
+        : [...this.files][0].name;
     },
   },
 };
