@@ -1,9 +1,7 @@
 <template>
   <v-menu
     v-model="showMenu"
-    :nudge-width="200"
     rounded="xl"
-    transition="scale-transition"
     origin="right top"
     close-on-content-click
   >
