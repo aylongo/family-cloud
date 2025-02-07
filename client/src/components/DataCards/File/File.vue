@@ -22,7 +22,7 @@
             :size="fileFormattedSize"
             :createdAt="fileFormattedCreatedAt"
             :showDialog="isDetailsDialogShown"
-						@update:showDialog="isDetailsDialogShown = $event"
+            @update:showDialog="isDetailsDialogShown = $event"
           />
         </v-col>
       </v-row>
@@ -55,15 +55,6 @@ export default {
     isDetailsDialogShown: false,
   }),
   methods: {
-    async downloadFile() {
-      try {
-        const res = await api.files().download(this.fileFormattedPath);
-
-        this.createDownloadLinkElement(res.data).click();
-      } catch (err) {
-        this.$toast.error(err.message);
-      }
-    },
     createDownloadLinkElement(fileData) {
       const url = window.URL.createObjectURL(new Blob([fileData]));
       const link = document.createElement("a");
@@ -72,6 +63,23 @@ export default {
       document.body.appendChild(link);
 
       return link;
+    },
+    async downloadFile() {
+      try {
+        const res = await api.files().download(this.fileFormattedPath);
+
+        this.createDownloadLinkElement(res.data).click();
+      } catch (error) {
+        this.$toast.error(error.message);
+      }
+    },
+    async deleteFile() {
+      try {
+        await api.files().delete(this.fileFormattedPath);
+        this.$toast.success(`הקובץ '${this.fileName}' נמחק`);
+      } catch (error) {
+        this.$toast.error(error.message);
+      }
     },
     openDetailsDialog() {
       this.isDetailsDialogShown = true;
@@ -129,7 +137,11 @@ export default {
         icon: "mdi-tray-arrow-down",
         itemAction: this.downloadFile,
       },
-      { title: "מחיקה", icon: "mdi-trash-can-outline" },
+      {
+        title: "מחיקה",
+        icon: "mdi-trash-can-outline",
+        itemAction: this.deleteFile,
+      },
     ];
   },
 };

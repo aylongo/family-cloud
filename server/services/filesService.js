@@ -14,17 +14,26 @@ exports.getFilesOnPath = async (fileRelativePath) => {
         createdAt: fileStats.birthtime,
         isDirectory: fileStats.isDirectory(),
       }));
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
-exports.uploadFile = async (newFile, fileName, newFileRelativePath) => {
+exports.uploadFile = async (newFile, newFileName, newFileRelativePath) => {
   try {
-    fileName && (newFile.name = fileName);
+    newFile.name = newFileName;
     const newFileFullPath = getFullFilePath(newFileRelativePath);
     await filesRepository.uploadFile(newFile, newFileFullPath);
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
+  }
+};
+
+exports.deleteFile = async (relativeFilePath) => {
+  try {
+    const fullFilePath = getFullFilePath(relativeFilePath);
+    await filesRepository.deleteFile(fullFilePath);
+  } catch (error) {
+    throw error;
   }
 };

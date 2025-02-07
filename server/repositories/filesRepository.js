@@ -6,15 +6,23 @@ exports.getFilesOnPath = async (filesPath) => {
       fileName,
       fileStats: fs.statSync(filesPath + "/" + fileName),
     }));
-  } catch (err) {
-    throw err;
+  } catch (error) {
+    throw error;
   }
 };
 
 exports.uploadFile = async (newFile, newFilePath) => {
   try {
-    await fs.appendFileSync(`${newFilePath}/${newFile.name}`, newFile.data);
-  } catch (err) {
-    throw err;
+    fs.appendFileSync(`${newFilePath}/${newFile.name}`, newFile.data);
+  } catch (error) {
+    throw error;
+  }
+};
+
+exports.deleteFile = async (filePath) => {
+  try {
+    fs.unlinkSync(filePath);
+  } catch (error) {
+    throw error;
   }
 };
