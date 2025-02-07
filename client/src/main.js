@@ -10,7 +10,7 @@ import "./utils/styles/index.css";
 const toastOptions = {
   maxToasts: 20,
   newestOnTop: true,
-  position: POSITION.BOTTOM_LEFT,
+  position: POSITION.BOTTOM_CENTER,
   timeout: 5000,
   closeOnClick: true,
   pauseOnFocusLoss: false,
@@ -21,6 +21,7 @@ const toastOptions = {
   hideProgressBar: false,
   closeButton: "button",
   icon: true,
+  rtl: true,
 };
 
 Vue.use(Toast, toastOptions);
